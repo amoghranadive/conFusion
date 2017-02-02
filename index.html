@@ -73,7 +73,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a>
+                        <a href="#" id="btnLogin">
                             <span class="glyphicon glyphicon-log-in"></span> Login
                         </a>
                     </li>
@@ -200,9 +200,9 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                     <p style="padding:35px;"></p>
-                   <a type="button" id="btnReserve" href = "#reservationform" class="btn btn-warning btn-block">
+                    <button id="btnReserve" class="btn btn-warning btn-block">
                         Reserve Table
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -418,15 +418,19 @@
             $("#mycarousel").carousel({interval:2000});
             
             $("#carousel-pause").click(function(){
-                $("mycarousel").carousel('pause');
+                $("#mycarousel").carousel('pause');
             });
             
             $("#carousel-play").click(function(){
-                $("mycarousel").carousel('cycle');
+                $("#mycarousel").carousel('cycle');
+            });
+                    
+            $("#btnReserve").click(function(){
+                $("#reserveTableModal").modal('show');
             });
             
-            $("#btnReserve").click(function(){
-               $("reserveTableModal").modal("show");
+            $("#btnLogin").click(function(){
+                $("#loginModal").modal('show');
             });
             
         });
