@@ -1,0 +1,25 @@
+{
+  "name": "conFusion",
+  "description": "Website for a restaurant",
+  "main": "index.html",
+  "keywords": [
+    "conFusion",
+    "Fusion"
+  ],
+  "authors": [
+    "Amogh Ranadive"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
