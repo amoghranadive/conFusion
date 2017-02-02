@@ -16,7 +16,7 @@
     <link href="css/mystyles.css" rel="stylesheet">
     
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="bower_components/bootstrap/dist/css/bootstrap-social.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-social-buttons/social-buttons-3.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,7 +73,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a data-toggle="modal" data-target="#loginModal">
+                        <a>
                             <span class="glyphicon glyphicon-log-in"></span> Login
                         </a>
                     </li>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                     <p style="padding:35px;"></p>
-                   <a type="button" href = "#reservationform" class="btn btn-warning btn-block" data-toggle="modal" data-target="#reserveTableModal">
+                   <a type="button" id="btnReserve" href = "#reservationform" class="btn btn-warning btn-block">
                         Reserve Table
                     </a>
                 </div>
@@ -425,7 +425,12 @@
                 $("mycarousel").carousel('cycle');
             });
             
+            $("#btnReserve").click(function(){
+               $("reserveTableModal").modal("show");
+            });
+            
         });
+        
     </script>
 </body>
 
