@@ -1,10 +1,13 @@
 {
   "name": "conFusion",
+  "version": "1.0.0",
   "description": "Website for a restaurant",
   "main": "index.html",
+  "moduleType": [],
   "keywords": [
     "conFusion",
-    "Fusion"
+    "Fusion",
+	"Restaurant"
   ],
   "authors": [
     "Amogh Ranadive"
@@ -21,6 +24,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "bootstrap-social-buttons": "^1.0.0"
+    "bootstrap-social-buttons": "^1.0.0",
+	"angular": "~1.4.7"
   }
 }
