@@ -70,11 +70,37 @@
 						<p>The comment should be shown only when the form contains valid
 						information and is not pristine</p>
                     </ul>
-                <form class="form-horizontal" name="commentForm"
-                		ng-submit="submitComment()" novalidate>
-					<p>Task 1: Design the form to submit the comments</p>
-					<p>Task 2: You need to validate that the user name and comments are entered</p>
-                </form>
+                    <form class="form-horizontal" name="commentForm" ng-submit="submitComment()" novalidate>
+                         <div class="form-group" ng-class="{'has-error':commentForm.userName.$error.required &&    !commentForm.userName.$pristine }">
+                            <label for="username" class="col-sm-3 control-label">Your Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter Your Name" ng-model="userComment.author" required>
+                                <span ng-show="commentForm.userName.$error.required && !commentForm.userName.$pristine" class="help-block">Your Name is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating" class="col-sm-3 control-label">Number of Stars</label>
+                            <div class="col-sm-9">
+                                <label class="radio-inline"><input type="radio" name="optrating" value=1 ng-model="userComment.rating">1</label>
+                                <label class="radio-inline"><input type="radio" name="optrating" value=2 ng-model="userComment.rating">2</label>
+                                <label class="radio-inline"><input type="radio" name="optrating" value=3 ng-model="userComment.rating">3</label>
+                                <label class="radio-inline"><input type="radio" name="optrating" value=4 ng-model="userComment.rating">4</label>
+                                <label class="radio-inline"><input type="radio" name="optrating" value=5 ng-model="userComment.rating">5</label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':commentForm.comment.$error.required &&    !commentForm.comment.$pristine }">
+                            <label for="comments" class="col-sm-3 control-label">Your Comments</label>
+                            <div class="col-sm-9">
+                                 <textarea class="form-control" id="comment" name="comment" rows="12" ng-model="userComment.comment" required></textarea>
+                                <span ng-show="commentForm.comment.$error.required && !commentForm.comment.$pristine" class="help-block">Your Comments are required.</span>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary" ng-disabled="commentForm.$invalid">Submit Comment</button>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
