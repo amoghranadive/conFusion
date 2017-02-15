@@ -115,7 +115,7 @@ angular.module('confusionApp')
                             comment:"",
                             date:""
                         };
-            }
+            };
     }])
 
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
