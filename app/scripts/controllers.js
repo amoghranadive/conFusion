@@ -11,12 +11,9 @@ angular.module('confusionApp')
         $scope.showMenu = false;
         $scope.message = "Loading...";
         
-        $scope.dishes = {};
-        
-        menuFactory.getDishes()
-        .then(
+        $scope.dishes = menuFactory.getDishes().query(
             function(response) {
-                $scope.dishes = response.data;
+                $scope.dishes = response;
                 $scope.showMenu = true;
             },
             function(response) {
@@ -104,19 +101,19 @@ angular.module('confusionApp')
             $scope.showDish = false;
             $scope.message = "Loading...";
         
-            menuFactory.getDish(parseInt($stateParams.id,10))
-            .then(
-                function (response) {
-                    $scope.dish = response.data;
-                    $scope.showDish=true;
-                },
-                function (response) {
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
-                }
+            $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
+                .$promise.then(
+                    function(response) {
+                        $scope.dish = response;
+                        $scope.showDish = true;
+                    },
+                    function(response) {
+                        $scope.message = "Error: " + response.status + " " + response.statusText;
+                    }
             );
     }])
 
-    .controller('DishCommentController', ['$scope', function($scope) {
+    .controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory) {
             
             //Step 1: Create a JavaScript object to hold the comment from the form
             $scope.userComment = {
@@ -132,6 +129,8 @@ angular.module('confusionApp')
                 console.log($scope.userComment); 
 
                 $scope.dish.comments.push($scope.userComment);
+                
+                menuFactory.getDishes().update({id: $scope.dish.id}, $scope.dish);
 
                 $scope.commentForm.$setPristine();
                 
@@ -149,18 +148,15 @@ angular.module('confusionApp')
             $scope.showDish = false;
             $scope.message = "Loading...";
         
-            $scope.featuredDish = {};
-        
-        
-            menuFactory.getDish(0)
-            .then(
-                function(response) {
-                    $scope.featuredDish = response.data;
-                    $scope.showDish = true;
-                },
-                function (response) {
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
-                }
+            $scope.featuredDish = menuFactory.getDishes().get({id:0})
+                .$promise.then(
+                    function(response) {
+                        $scope.featuredDish = response;
+                        $scope.showDish = true;
+                    },
+                    function(response) {
+                        $scope.message = "Error: " + response.status + " " + response.statusText;
+                    }
             );
         
             $scope.featuredPromotion = menuFactory.getPromotion(0);
